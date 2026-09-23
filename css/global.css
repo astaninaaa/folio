@@ -148,6 +148,13 @@ button {
   font-weight:  400;
 }
 
+.footer-copyright {
+  font-family:  var(--font-mono);
+  font-size:    0.88rem;
+  line-height:  var(--text-mono-lh-xs);
+  font-weight:  400;
+}
+
 
 /* ─── 3. Шапка (Header) ─────────────────────────────────────────────────────── */
 .site-header {
