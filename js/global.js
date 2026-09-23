@@ -88,7 +88,10 @@
   const FADE_INTERVAL = 30;      // интервал в мс
 
   // ─── Фоновые слои (только на главной) ─────────────────────────────────────
-  const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+  const path = window.location.pathname;
+  const isHome = path === '/' 
+    || path.endsWith('/') 
+    || path.endsWith('/index.html');
   const bgLayer1 = document.querySelector('.bg-layer-1');
   const bgLayer2 = document.querySelector('.bg-layer-2');
   let activeBgLayer = 1; // 1 или 2, какой сейчас виден
