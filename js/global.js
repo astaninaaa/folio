@@ -385,28 +385,34 @@
     if (!playlistItems || !state.tracks.length) return;
     playlistItems.innerHTML = '';
     state.tracks.forEach((track, idx) => {
+
       const li = document.createElement('li');
       li.dataset.index = idx;
-      li.innerHTML = `
-        <span class="pl-num">${String(idx + 1).padStart(2, '0')}</span>
-        <span class="pl-name">${track.name}</span>
-        <span class="pl-time"></span>
-      `;
-      // ---- ДЛИТЕЛЬНОСТЬ ----
-      const timeSpan = li.querySelector('.pl-time');
+
+      const numSpan = document.createElement('span');
+      numSpan.className = 'pl-num';
+      const isActive = idx === state.currentIndex;
+      numSpan.textContent = (isActive && state.isPlaying)
+        ? '▶'
+        : String(idx + 1).padStart(2, '0');
+
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'pl-name';
+      nameSpan.textContent = track.name;
+
+      const timeSpan = document.createElement('span');
+      timeSpan.className = 'pl-time';
       if (track.duration) {
         const mins = Math.floor(track.duration / 60);
         const secs = String(track.duration % 60).padStart(2, '0');
         timeSpan.textContent = `${mins}:${secs}`;
       }
-      // ---- ИНДИКАТОР ВОСПРОИЗВЕДЕНИЯ ----
-      const numSpan = li.querySelector('.pl-num');
-      const isActive = idx === state.currentIndex;
-      if (isActive && state.isPlaying) {
-        numSpan.textContent = '▶';
-      } else {
-        numSpan.textContent = String(idx + 1).padStart(2, '0');
-      }
+
+      li.appendChild(numSpan);
+      li.appendChild(nameSpan);
+      li.appendChild(timeSpan);
+
+
       li.addEventListener('click', (e) => {
         e.stopPropagation();
         // Если кликнули по уже играющему треку — ставим на паузу
