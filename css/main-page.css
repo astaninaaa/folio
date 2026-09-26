@@ -345,6 +345,12 @@ body:not(.is-home) .bg-layer-2 {
   opacity:          1;
 }
 
+.card--craft,
+.card--poetry,
+.poetry-toggle-btn {
+  scroll-margin-top: calc(var(--header-height) + 8px);
+  scroll-margin-bottom: calc(var(--footer-height) + 8px);
+}
 
 /* ─── 8. Карточки — Нижняя зона (Проекты) ───────────────────────────────────── */
 .projects-cards-container {
@@ -514,6 +520,7 @@ body.zone-hovered--poetry:not(.active-poetry) .card--poetry:hover .card__counter
 
 
 /* ─── 10. Состояния активных зон (Deep Linking / клик) ───────────────────────── */
+body.active-craft   .zone--craft,
 body.active-poetry  .zone--poetry,
 body.active-projects .zone--projects {
   opacity:          1;
@@ -701,7 +708,7 @@ body.active-poetry .card__counter {
     bottom: var(--footer-height);
     left: 0;
     width: 100%;
-    height: calc(88vw * 0.535 + 112px);        
+    height: min(calc(88vw * 0.535 + 112px), 60vh);        
     opacity:    1;
     transform:  none;
     z-index:    10;
