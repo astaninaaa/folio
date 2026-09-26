@@ -539,18 +539,6 @@
       });
     }
 
-    // Открытие/закрытие плейлиста
-    if (playlistBtn && playlistWrapper) {
-      playlistBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        playlistWrapper.classList.toggle('show');
-      });
-      document.addEventListener('click', (e) => {
-        if (!playlistWrapper.contains(e.target) && !playlistBtn.contains(e.target)) {
-          playlistWrapper.classList.remove('show');
-        }
-      });
-    }
   }
 
   // ─── Старт ──────────────────────────────────────────────────────────────────

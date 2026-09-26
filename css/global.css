@@ -22,7 +22,7 @@
   --border-inverse:    rgba(255, 255, 255, 0.15);
   --text-default:      #14123B;
   --text-hover:        #000000;
-  --text-footer:       rgba(255, 255, 255, 0.8);
+  --text-footer:       #DADBEB;
   --link-footer:       #FFFFFF;
   --slider-thumb:      #FFFFFF;
 
@@ -722,6 +722,38 @@ button {
   display: flex;
 }
 
+
+
+/* ─── Видимый фокус для клавиатурной навигации ─── */
+:focus-visible {
+  outline: 2px solid var(--border-blue-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Для тёмного футера — светлый фокус */
+.site-footer:focus-visible {
+  outline-color: var(--border-blue-light);
+}
+
+/* У кнопок с all:unset вернуть фокус */
+.winamp-btn:focus-visible,
+.footer-link:focus-visible,
+.linkslist-toggle:focus-visible {
+  outline: 2px solid var(--border-blue-light);
+  outline-offset: 2px;
+}
+
+/* Карточки и кнопки контента */
+.card--project:focus-visible,
+.card--craft:focus-visible,
+.card--poetry:focus-visible,
+.poetry-toggle-btn:focus-visible,
+.project-sheet__close:focus-visible,
+.panel-close-btn:focus-visible {
+  outline: 2px solid var(--link-default);
+  outline-offset: 2px;
+}
 
 
 
